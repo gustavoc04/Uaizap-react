@@ -45,7 +45,7 @@ const MensagemInputField = styled.input`
 
 const EnviarButton = styled.button`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #dcf8c6;
+  background-color: #128c7e;
   border: none;
   padding: 15px 16px;
   border-radius: 6px;
