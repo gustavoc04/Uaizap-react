@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardMensagemContainer = styled.div`
-  background-color: ${({ remetente }) => remetente.toLowerCase() === 'eu' ? '#007bff' : '#e0e0e0'};
+  background-color: ${({ remetente }) => remetente.toLowerCase().trim() === 'eu' ? '#dcf8c6' : '#ffffff'};
   border-radius: 8px;
   padding: 10px;
   margin: 10px;
   display: inline-block;
-  color: ${({ remetente }) => (remetente.toLowerCase() === 'eu' ? '#fff' : 'inherit')};
   cursor: pointer;
-  text-align: right;
-  align-self: ${({ remetente }) => (remetente.toLowerCase() === 'eu' ? 'flex-end' : 'flex-start')};
+  text-align: ${({ remetente }) => (remetente.toLowerCase().trim() === 'eu' ? 'right' : 'left')};
+  align-self: ${({ remetente }) => (remetente.toLowerCase().trim() === 'eu' ? 'flex-end' : 'flex-start')};
   word-wrap: break-word;
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 1px 0.5px;
 `;
 
 
@@ -33,7 +33,7 @@ class CardMensagem extends React.Component {
 
     return (
       <CardMensagemContainer onDoubleClick={this.handleDoubleClick} remetente={nome}>
-        {nome.toLowerCase() !== 'eu' && <NomeEnviado>{nome}</NomeEnviado>}
+        {nome.toLowerCase().trim() !== 'eu' && <NomeEnviado>{nome}</NomeEnviado>}
         <BalaoMensagem>{mensagem}</BalaoMensagem>
       </CardMensagemContainer>
     );

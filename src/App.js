@@ -4,6 +4,7 @@ import BarraInput from './componetns/BarraInput';
 import CardMensagem from './componetns/CardMensagem';
 
 const AppContainer = styled.div`
+  background-color: #ece5dd;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -11,11 +12,14 @@ const AppContainer = styled.div`
 
 const MensagensContainer = styled.div`
   flex-grow: 1;
-  overflow-y: auto;
   padding: 10px;
   padding-left: 25%;
+  padding-right: 25% ;
+  backdrop-filter: blur(52px);
   display: flex;
   flex-direction: column;
+  margin-bottom: 70px;
+  overflow: auto;
 `;
 
 

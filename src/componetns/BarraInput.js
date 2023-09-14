@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MensagemFormContainer = styled.div`
-  background-color: #f0f0f0;
+  background-color: #ece5dd;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
   padding: 10px;
   display: flex;
@@ -17,6 +18,7 @@ const MensagemFormContainer = styled.div`
 const InputLabel = styled.label`
   margin-bottom: 5px;
   font-weight: bold;
+  justify-content: space-between;
 `;
 
 const InputContainer = styled.div`
@@ -26,23 +28,27 @@ const InputContainer = styled.div`
 `;
 
 const NomeInputField = styled.input`
-  padding: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 15px;
   width: 100px;
-  opacity: 0.7;
+  border-radius: 6px;
+  border: none;
 `;
 
 const MensagemInputField = styled.input`
-  padding: 8px;
-  width: 200px;
-  opacity: 0.7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 15px;
+  width: 420px;
+  border-radius: 6px;
+  border: none;
 `;
 
 const EnviarButton = styled.button`
-  background-color: #007bff;
-  color: #fff;
-  padding: 8px 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #dcf8c6;
   border: none;
-  border-radius: 4px;
+  padding: 15px 16px;
+  border-radius: 6px;
   cursor: pointer;
 `;
 
