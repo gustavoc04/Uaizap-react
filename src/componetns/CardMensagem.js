@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardMensagemContainer = styled.div`
-  background-color: ${({ remetente }) => (remetente.toLowerCase() === 'eu' ? '#007bff' : '#e0e0e0')};
+  background-color: ${({ remetente }) => remetente.toLowerCase() === 'eu' ? '#007bff' : '#e0e0e0'};
   border-radius: 8px;
   padding: 10px;
   margin: 10px;
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
   color: ${({ remetente }) => (remetente.toLowerCase() === 'eu' ? '#fff' : 'inherit')};
   cursor: pointer;
-  text-align: ${({ remetente }) => (remetente.toLowerCase() === 'eu' ? 'right' : 'left')};
-  word-wrap: break-word; /* Adicione esta linha para ajustar o tamanho à mensagem */
+  text-align: right;
+  align-self: ${({ remetente }) => (remetente.toLowerCase() === 'eu' ? 'flex-end' : 'flex-start')};
+  word-wrap: break-word;
 `;
+
 
 const NomeEnviado = styled.div`
   font-weight: bold;

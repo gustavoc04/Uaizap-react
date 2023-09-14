@@ -1,20 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import CardMensagem from './componetns/CardMensagem';
 import BarraInput from './componetns/BarraInput';
+import CardMensagem from './componetns/CardMensagem';
 
 const AppContainer = styled.div`
   display: flex;
-  min-height: 100vh;
+  flex-direction: column;
+  height: 100vh;
 `;
 
 const MensagensContainer = styled.div`
-  width: 100%;
+  flex-grow: 1;
   overflow-y: auto;
+  padding: 10px;
+  padding-left: 25%;
   display: flex;
   flex-direction: column;
-
 `;
+
 
 class App extends React.Component {
   constructor(props) {
@@ -24,20 +27,17 @@ class App extends React.Component {
     };
   }
 
-  adicionarMensagem = (nome, mensagem) => {
-    const { mensagens } = this.state;
-    const novaMensagem = {
-      id: new Date().getTime(),
-      nome,
-      mensagem,
-    };
-    this.setState({ mensagens: [...mensagens, novaMensagem] });
+  handleEnviarMensagem = (nome, mensagem) => {
+    const novaMensagem = { nome, mensagem };
+    this.setState((prevState) => ({
+      mensagens: [...prevState.mensagens, novaMensagem],
+    }));
   };
 
-  removerMensagem = (id) => {
-    const { mensagens } = this.state;
-    const mensagensFiltradas = mensagens.filter((mensagem) => mensagem.id !== id);
-    this.setState({ mensagens: mensagensFiltradas });
+  handleDeleteMensagem = (id) => {
+    this.setState((prevState) => ({
+      mensagens: prevState.mensagens.filter((mensagem, index) => index !== id),
+    }));
   };
 
   render() {
@@ -46,17 +46,18 @@ class App extends React.Component {
     return (
       <AppContainer>
         <MensagensContainer>
-          {mensagens.map((mensagem) => (
+          {mensagens.map((mensagem, index) => (
             <CardMensagem
-              key={mensagem.id}
-              id={mensagem.id}
+              key={index}
+              id={index}
               nome={mensagem.nome}
               mensagem={mensagem.mensagem}
-              onDelete={this.removerMensagem}
+              onDelete={this.handleDeleteMensagem}
+              direita={mensagem.nome.toLowerCase() === 'eu'}
             />
           ))}
         </MensagensContainer>
-        <BarraInput onEnviar={this.adicionarMensagem} />
+        <BarraInput onEnviar={this.handleEnviarMensagem} />
       </AppContainer>
     );
   }
