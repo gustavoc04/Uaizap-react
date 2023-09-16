@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const CardMensagemContainer = styled.div`
   background-color: ${({ remetente }) => remetente.toLowerCase().trim() === 'eu' ? '#dcf8c6' : '#ffffff'};
   border-radius: 8px;
-  padding: 10px;
-  margin: 10px;
+  padding: 8px;
+  margin: 5px;
   display: inline-block;
   cursor: pointer;
   text-align: ${({ remetente }) => (remetente.toLowerCase().trim() === 'eu' ? 'right' : 'left')};

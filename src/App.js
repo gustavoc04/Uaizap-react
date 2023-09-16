@@ -57,11 +57,10 @@ class App extends React.Component {
               nome={mensagem.nome}
               mensagem={mensagem.mensagem}
               onDelete={this.handleDeleteMensagem}
-              direita={mensagem.nome.toLowerCase() === 'eu'}
             />
           ))}
         </MensagensContainer>
-        <BarraInput onEnviar={this.handleEnviarMensagem} />
+        <BarraInput Enviar={this.handleEnviarMensagem} />
       </AppContainer>
     );
   }

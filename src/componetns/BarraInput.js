@@ -71,8 +71,20 @@ class BarraInput extends React.Component {
 
   handleEnviarClick = () => {
     const { nome, mensagem } = this.state;
-    this.props.onEnviar(nome, mensagem);
+    
+    if (nome.trim() === '' || mensagem.trim() === '') {
+      alert('Por favor, preencha o campo de remetente e mensagem.');
+      return;
+    }
+    
+    this.props.Enviar(nome, mensagem);
     this.setState({ nome: '', mensagem: '' });
+  };
+
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.handleEnviarClick();
+    }
   };
 
   render() {
@@ -86,7 +98,8 @@ class BarraInput extends React.Component {
             type="text"
             value={nome}
             onChange={this.handleNomeChange}
-            placeholder="Nome" // Adiciona o placeholder "Nome"
+            onKeyPress={this.handleKeyPress}
+            placeholder="Nome"
           />
         </InputContainer>
         <InputContainer>
@@ -95,7 +108,8 @@ class BarraInput extends React.Component {
             type="text"
             value={mensagem}
             onChange={this.handleMensagemChange}
-            placeholder="Mensagem" // Adiciona o placeholder "Mensagem"
+            onKeyPress={this.handleKeyPress}
+            placeholder="Mensagem"
           />
         </InputContainer>
         <EnviarButton onClick={this.handleEnviarClick}>Enviar</EnviarButton>
@@ -105,3 +119,4 @@ class BarraInput extends React.Component {
 }
 
 export default BarraInput;
+
