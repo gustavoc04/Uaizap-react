@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const MensagemFormContainer = styled.div`
   background-color: #ece5dd;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
   padding: 10px;
+  padding-left: 51%;
+  padding-right: 51%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +16,8 @@ const MensagemFormContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  max-width: 600px;
+  margin: 0 auto;
 `;
 
 const InputLabel = styled.label`
@@ -25,22 +30,31 @@ const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 10px;
+  flex-grow: 1;
 `;
 
 const NomeInputField = styled.input`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 15px;
-  width: 100px;
+  width: 80px;
   border-radius: 6px;
   border: none;
+
+  @media (max-width: 600px) {
+    width: 80px;
+  }
 `;
 
 const MensagemInputField = styled.input`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 15px;
-  width: 420px;
+  width: 380px;
   border-radius: 6px;
   border: none;
+
+  @media (max-width: 600px) {
+    width: 240px;
+  }
 `;
 
 const EnviarButton = styled.button`
@@ -57,7 +71,7 @@ class BarraInput extends React.Component {
     super(props);
     this.state = {
       nome: '',
-      mensagem: '',
+      texto: '',
     };
   }
 
@@ -66,19 +80,19 @@ class BarraInput extends React.Component {
   };
 
   handleMensagemChange = (e) => {
-    this.setState({ mensagem: e.target.value });
+    this.setState({ texto: e.target.value });
   };
 
   handleEnviarClick = () => {
-    const { nome, mensagem } = this.state;
+    const { nome, texto } = this.state;
     
-    if (nome.trim() === '' || mensagem.trim() === '') {
+    if (nome.trim() === '' || texto.trim() === '') {
       alert('Por favor, preencha o campo de remetente e mensagem.');
       return;
     }
     
-    this.props.Enviar(nome, mensagem);
-    this.setState({ nome: '', mensagem: '' });
+    this.props.Enviar(nome, texto);
+    this.setState({ nome: '', texto: '' });
   };
 
   handleKeyPress = (e) => {
@@ -88,7 +102,7 @@ class BarraInput extends React.Component {
   };
 
   render() {
-    const { nome, mensagem } = this.state;
+    const { nome, texto } = this.state;
 
     return (
       <MensagemFormContainer>
@@ -106,10 +120,10 @@ class BarraInput extends React.Component {
           <InputLabel></InputLabel>
           <MensagemInputField
             type="text"
-            value={mensagem}
+            value={texto}
             onChange={this.handleMensagemChange}
             onKeyPress={this.handleKeyPress}
-            placeholder="Mensagem"
+            placeholder="Digite uma mensagem"
           />
         </InputContainer>
         <EnviarButton onClick={this.handleEnviarClick}>Enviar</EnviarButton>

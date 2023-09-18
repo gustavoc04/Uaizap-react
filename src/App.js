@@ -8,19 +8,21 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  padding: 10px;
 `;
 
 const MensagensContainer = styled.div`
   flex-grow: 1;
   padding: 10px;
   padding-left: 25%;
-  padding-right: 25% ;
-  backdrop-filter: blur(52px);
+  padding-right: 25%;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   margin-bottom: 70px;
   overflow: auto;
 `;
+
 
 
 class App extends React.Component {
@@ -31,14 +33,14 @@ class App extends React.Component {
     };
   }
 
-  handleEnviarMensagem = (nome, mensagem) => {
-    const novaMensagem = { nome, mensagem };
+  handleEnviarMensagem = (nome, texto) => {
+    const novaMensagem = { nome, texto };
     this.setState((prevState) => ({
       mensagens: [...prevState.mensagens, novaMensagem],
     }));
   };
 
-  handleDeleteMensagem = (id) => {
+  handleDeletarMensagem = (id) => {
     this.setState((prevState) => ({
       mensagens: prevState.mensagens.filter((mensagem, index) => index !== id),
     }));
@@ -55,8 +57,8 @@ class App extends React.Component {
               key={index}
               id={index}
               nome={mensagem.nome}
-              mensagem={mensagem.mensagem}
-              onDelete={this.handleDeleteMensagem}
+              texto={mensagem.texto}
+              deletarMensagem={this.handleDeletarMensagem}
             />
           ))}
         </MensagensContainer>

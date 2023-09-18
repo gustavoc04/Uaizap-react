@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const CardMensagemContainer = styled.div`
   background-color: ${({ remetente }) => remetente.toLowerCase().trim() === 'eu' ? '#dcf8c6' : '#ffffff'};
   border-radius: 8px;
-  padding: 8px;
+  padding: 10px;
   margin: 5px;
   display: inline-block;
   cursor: pointer;
@@ -25,16 +25,16 @@ const BalaoMensagem = styled.div`
 
 class CardMensagem extends React.Component {
   handleDoubleClick = () => {
-    this.props.onDelete(this.props.id);
+    this.props.deletarMensagem(this.props.id);
   };
 
   render() {
-    const { nome, mensagem } = this.props;
+    const { nome, texto } = this.props;
 
     return (
       <CardMensagemContainer onDoubleClick={this.handleDoubleClick} remetente={nome}>
         {nome.toLowerCase().trim() !== 'eu' && <NomeEnviado>{nome}</NomeEnviado>}
-        <BalaoMensagem>{mensagem}</BalaoMensagem>
+        <BalaoMensagem>{texto}</BalaoMensagem>
       </CardMensagemContainer>
     );
   }
