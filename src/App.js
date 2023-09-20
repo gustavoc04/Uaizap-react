@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BarraInput from './componetns/BarraInput';
+import MensagemForm from './componetns/MensagemForm';
 import CardMensagem from './componetns/CardMensagem';
 
 const AppContainer = styled.div`
@@ -62,7 +62,7 @@ class App extends React.Component {
             />
           ))}
         </MensagensContainer>
-        <BarraInput Enviar={this.handleEnviarMensagem} />
+        <MensagemForm Enviar={this.handleEnviarMensagem} />
       </AppContainer>
     );
   }
